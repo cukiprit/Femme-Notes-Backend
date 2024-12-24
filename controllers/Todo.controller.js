@@ -7,6 +7,7 @@ export const getAllTodos = async (req, res) => {
   const offset = (page - 1) * limit;
 
   const { count, rows } = await Todos.findAndCountAll({
+    attributes: ["id", "title", "content", "createdAt", "updatedAt"],
     where: {
       userId: req.user.id,
     },

@@ -10,7 +10,7 @@
     "test": "mocha --experimental-modules tests/**/*.test.js",
     "start": "node index.js"
   },
-  "author": "Google LLC",
+  "author": "Andhika Dwiky Pratama",
   "license": "Apache-2.0",
   "dependencies": {
     "bcrypt": "^5.1.1",

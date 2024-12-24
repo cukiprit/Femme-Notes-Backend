@@ -7,6 +7,13 @@ import jwt from "jsonwebtoken";
 export const SignUp = async (req, res) => {
   const { name, email, password } = req.body;
 
+  if (!name || !email || !password) {
+    return res.status(400).json({
+      message: "error",
+      errors: "Name, email or password are required!",
+    });
+  }
+
   const checkUser = await Users.findOne({ where: { email: email } });
 
   if (checkUser) {
@@ -107,7 +114,7 @@ export const GetProfileUser = async (req, res) => {
 };
 
 export const UpdateProfile = async (req, res) => {
-  const { nama } = req.body;
+  const { name, email } = req.body;
 
   try {
     const user = await Users.findByPk(req.user.id);
@@ -119,11 +126,11 @@ export const UpdateProfile = async (req, res) => {
       });
     }
 
-    const data = await user.update({ nama: nama });
+    const data = await user.update({ name, email });
 
     return res.status(200).json({
       message: "Success",
-      data,
+      user: data,
     });
   } catch (err) {
     return res.status(401).json({

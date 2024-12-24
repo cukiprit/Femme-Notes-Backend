@@ -15,26 +15,26 @@ export const seedData = async () => {
     { name: "Admin2", email: "admin2@example.com", password: hashedPass2 },
   ]);
 
-  const todos = [];
-  for (let i = 0; i < 1000; i++) {
-    todos.push({
-      title: faker.lorem.sentence(5),
-      content: faker.lorem.paragraph({ min: 1, max: 3 }),
-      userId: faker.number.int({ min: 1, max: 2 }),
-    });
-  }
-  await Todos.bulkCreate(todos);
+  // const todos = [];
+  // for (let i = 0; i < 1000; i++) {
+  //   todos.push({
+  //     title: faker.lorem.sentence(5),
+  //     content: faker.lorem.paragraph({ min: 1, max: 3 }),
+  //     userId: faker.number.int({ min: 1, max: 2 }),
+  //   });
+  // }
+  // await Todos.bulkCreate(todos);
 
-  const tasks = [];
-  for (let i = 0; i < 1000; i++) {
-    tasks.push({
-      title: faker.lorem.sentence(5),
-      note: faker.lorem.paragraph({ min: 1, max: 3 }),
-      date: faker.date.past(),
-      start_task: faker.date.past(),
-      end_task: faker.date.future(),
-      userId: faker.number.int({ min: 1, max: 2 }),
-    });
-  }
-  await Tasks.bulkCreate(tasks);
+  // const tasks = [];
+  // for (let i = 0; i < 1000; i++) {
+  //   tasks.push({
+  //     title: faker.lorem.sentence(5),
+  //     note: faker.lorem.paragraph({ min: 1, max: 3 }),
+  //     date: faker.date.past(),
+  //     start_task: faker.date.past(),
+  //     end_task: faker.date.future(),
+  //     userId: faker.number.int({ min: 1, max: 2 }),
+  //   });
+  // }
+  // await Tasks.bulkCreate(tasks);
 };

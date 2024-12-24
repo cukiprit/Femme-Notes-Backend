@@ -18,7 +18,7 @@ const Tasks = sequelize.define(
       allowNull: false,
     },
     date: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
       allowNull: false,
     },
     start_task: {

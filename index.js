@@ -24,6 +24,7 @@ import {
   createTask,
   deleteTask,
   getAllTasks,
+  getAllTasksByDate,
   getTaskById,
   updateTask,
 } from "./controllers/Task.controller.js";
@@ -55,7 +56,7 @@ app.post("/todo", AuthenticateJWT, createTodo);
 app.put("/todo/:id", AuthenticateJWT, updateTodo);
 app.delete("/todo/:id", AuthenticateJWT, deleteTodo);
 // Task Routes
-app.get("/task", AuthenticateJWT, getAllTasks);
+app.get("/task", AuthenticateJWT, getAllTasksByDate);
 app.get("/task/:id", AuthenticateJWT, getTaskById);
 app.post("/task", AuthenticateJWT, createTask);
 app.put("/task/:id", AuthenticateJWT, updateTask);

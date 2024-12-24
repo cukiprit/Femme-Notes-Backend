@@ -23,6 +23,21 @@ export const getAllTasks = async (req, res) => {
   });
 };
 
+export const getAllTasksByDate = async (req, res) => {
+  const { date } = req.query;
+  try {
+    const { count, rows } = await Tasks.findAndCountAll({
+      where: { userId: req.user.id, date },
+      order: [["createdAt", "ASC"]],
+    });
+    return res.status(200).json({ tasks: rows });
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ message: "Error fetching tasks", error: err.message });
+  }
+};
+
 export const getTaskById = async (req, res) => {
   const data = await Tasks.findByPk(req.params.id);
 
@@ -40,7 +55,14 @@ export const getTaskById = async (req, res) => {
 export const createTask = async (req, res) => {
   const { title, note, date, start_task, end_task } = req.body;
 
-  const data = await Tasks.create({ title, note, date, start_task, end_task });
+  const data = await Tasks.create({
+    title,
+    note,
+    date,
+    start_task,
+    end_task,
+    userId: req.user.id,
+  });
 
   return res.status(201).json({ message: "Success", data });
 };
